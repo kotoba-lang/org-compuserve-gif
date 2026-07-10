@@ -9,7 +9,20 @@
 
 (defn- rd [p] (mapv #(bit-and (int %) 0xff)
                     (with-open [in (io/input-stream (io/resource p))] (.readAllBytes in))))
-(defn- expected [p] (edn/read-string (slurp (io/resource p))))
+
+;; The fixtures are Datomic/Datascript tx-data (a single-entity vector with
+;; namespaced attrs, non-scalar values pr-str'd into blob strings; see
+;; scripts/edn-datomize.bb). `expected` reconstitutes the original bare-keyed
+;; map so the get-in lookups below keep working unchanged.
+(defn- unblob [v]
+  (if (string? v)
+    (try (let [parsed (edn/read-string v)] (if (coll? parsed) parsed v))
+         (catch Exception _ v))
+    v))
+(defn- reconstitute-entity [tx-data]
+  (into {} (map (fn [[k v]] [(keyword (name k)) (unblob v)]))
+        (dissoc (first tx-data) :db/id)))
+(defn- expected [p] (reconstitute-entity (edn/read-string (slurp (io/resource p)))))
 
 (deftest gif-lzw-pixels
   (testing "small 4x2 indexed LZW vs Pillow ground truth"
