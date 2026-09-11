@@ -28,5 +28,5 @@ Pillow-encoded fixtures, including a 96×40 interlaced image exercising the
 ## Test
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
