@@ -1,4 +1,4 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; edn-datomize.bb — wrap a resource .edn file's top-level map into a
 ;; Datomic/Datascript tx-data vector: [{:db/id -1 <ns>/<key> <value> ...}].
 ;;
