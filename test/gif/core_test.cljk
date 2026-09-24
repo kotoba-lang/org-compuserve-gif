@@ -1,5 +1,5 @@
 (ns gif.core-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [gif.core :as gif]))
