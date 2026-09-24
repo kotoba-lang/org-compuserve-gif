@@ -31,7 +31,7 @@
 ;;     out of bytes are different facts and get different reasons.
 
 (ns gif.blocks-kotoba-parity-test
-  (:require [clojure.edn :as edn]
+  (:require [kotoba.lang.edn :as edn]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is testing]]
