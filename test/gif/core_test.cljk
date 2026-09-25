@@ -1,7 +1,7 @@
 (ns gif.core-test
   (:require [kotoba.test :refer [deftest is]]
             [kotoba.lang.edn :as edn]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [gif.core :as gif]))
 
 (def grammar (edn/read-string (slurp (io/resource "gif/grammar.edn"))))

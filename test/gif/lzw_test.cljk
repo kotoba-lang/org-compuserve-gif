@@ -4,7 +4,7 @@
    image (4-pass de-ordering)."
   (:require [kotoba.test :refer [deftest is testing]]
             [kotoba.lang.edn :as edn]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [gif.core :as gif]))
 
 (defn- rd [p] (mapv #(bit-and (int %) 0xff)
